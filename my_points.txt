@@ -1,0 +1,9 @@
+1. Какой проект будет?
+- Web + App + DB
+2. DB?
+- SQL/Postgres
+3. Web?
+- Flask
+4. App
+- Python
+5. Docker + gitlab CI + Kuber
