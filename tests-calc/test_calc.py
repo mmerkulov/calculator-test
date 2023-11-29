@@ -1,9 +1,17 @@
 from src.calculator import Calculator
 from contextlib import nullcontext as not_raise
+
 import allure
 import pytest
+import sys
 
-class TestCalculator:
+MAX_INT = sys.maxsize
+MIN_INT = -sys.maxsize - 1
+
+
+
+
+class TestCalculatorPositive:
 
     @allure.title('Checking additional function.')
     @pytest.mark.parametrize('num1, num2, result, expectation',
@@ -15,7 +23,19 @@ class TestCalculator:
             assert Calculator.addition(num1, num2) == result
 
     @allure.title('Checking minus function.')
-    @pytest.mark.parametrize('num1, num2, result, ',
+    @pytest.mark.parametrize('num1, num2, result',
                              [(0, 0, 0), (1, 101, -100), (-1, 1, -2), (10000, 10000, 0)])
     def test_minus(self, num1, num2, result):
         assert Calculator.minus(num1, num2) == result
+
+
+class TestCalculatorNegative:
+
+    @staticmethod
+    @allure.title('Checking division with negative result.')
+    @pytest.mark.negative
+    @pytest.mark.parametrize('num1, num2, result',
+                             [(10, 1, 1), (1, 1, 0), (10, -1, 10)
+                                 , (123, 123, 2), (999999, 1, 1), (MAX_INT, MAX_INT, 2)])
+    def test_division(num1, num2, result):
+        assert Calculator.division(num1, num2) != result
