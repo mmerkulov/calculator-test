@@ -1,3 +1,5 @@
+import time
+
 from src.calculator import Calculator
 from contextlib import nullcontext as not_raise
 
@@ -7,8 +9,6 @@ import sys
 
 MAX_INT = sys.maxsize
 MIN_INT = -sys.maxsize - 1
-
-
 
 
 class TestCalculatorPositive:
@@ -39,3 +39,9 @@ class TestCalculatorNegative:
                                  , (123, 123, 2), (999999, 1, 1), (MAX_INT, MAX_INT, 2)])
     def test_division(num1, num2, result):
         assert Calculator.division(num1, num2) != result
+
+
+@pytest.mark.skipif('config.getoption("--browser") == "false"')
+def test_slow():
+    time.sleep(10)
+    assert 1 == 1
