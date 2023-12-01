@@ -11,20 +11,20 @@ def checking_work_mode():
     assert settings.WORK_MODE == 'TEST'
 
 
-def pytest_addoption(parser):
-    parser.addoption(
-        '--browser',
-        default='chrome',
-        choises=('chrome', 'opera', 'firefox')
-    )
+# def pytest_addoption(parser):
+#     parser.addoption(
+#         '--browser',
+#         default='chrome',
+#         choises=('chrome', 'opera', 'firefox')
+#     )
 
 
-def pytest_addoption(parser):
-    parser.addoption(
-        '--run-slow',
-        default='false',
-        choises=('true', 'false')
-    )
+# def pytest_addoption(parser):
+#     parser.addoption(
+#         '--run-slow',
+#         default='false',
+#         choises=('true', 'false')
+#     )
 
 
 @pytest.fixture
