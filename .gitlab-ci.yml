@@ -1,0 +1,17 @@
+image: python:3.11-slim
+
+default:
+  tags:
+    - shellqalocal
+
+stages:
+  - test
+
+Integration tests with Allure:
+  stage: test
+  script:
+    - pytest -s -v
+    - pytest --alluredir ./allure-reports
+  artifacts:
+    paths:
+      - ./allure-reports/*
